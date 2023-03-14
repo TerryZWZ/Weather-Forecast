@@ -1,0 +1,527 @@
+html {
+    /*Box model stuff*/
+    background-size: cover;
+    background: url("https://wallpaperaccess.com/full/31189.jpg") no-repeat center center fixed;
+    /*Miscellaneous*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+body {
+    /*Typography stuff*/
+    font-family: "Segoe UI";
+    text-align: center;
+    text-shadow: black 1px 0 10px;
+    color: white;
+}
+
+#all {
+    display: flex;
+}
+
+#bottom {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Search Input --- */
+#title {
+    /*Positioning stuff*/
+    z-index: 2;
+    /*Box model stuff*/
+    margin-left: 2%;
+    margin-top: 2%;
+    /*Typography stuff*/
+    font-size: 2em;
+    color: white;
+    /*Miscellaneous*/
+    float: left;
+}
+
+form {
+    text-align: center;
+}
+
+#inputCity {
+    /*Box model stuff*/
+    width: 90%;
+    border-width: 0;
+    border-radius: 10px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    /*Typography stuff*/
+    font-family: "Segoe UI";
+    font-size: 2.2em;
+    text-align: center;
+    color: white;
+    /*Manipulations stuff*/
+    transition: text-shadow 0.5s;
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#inputCity:hover {
+    text-shadow: 1px 1px 1px white;
+}
+
+#inputCity::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+#search {
+    /*Box model stuff*/
+    width: 30px;
+    border: none;
+    background-color: inherit;
+    /*Miscellaneous*/
+    cursor: pointer;
+    appearance: none;
+}
+
+#searchIcon {
+    width: 30px;
+}
+
+#searchBar {
+    /*Positioning stuff*/
+    z-index: 2;
+    /*Box model stuff*/
+    width: 500px;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+/* --- City Card --- */
+#mainCard {
+    /*Display stuff*/
+    display: flex;
+    justify-content: center;
+}
+
+#weatherCard {
+    /*Display stuff*/
+    display: grid;
+    grid-template-rows: 55% 45%;
+    /*Box model stuff*/
+    width: 65%;
+    height: 330px;
+    padding: 1%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.weatherLine {
+    /*Miscellaneous*/
+    float: left;
+}
+
+#city {
+    /*Box model stuff*/
+    margin-left: 5%;
+    /*Typography stuff*/
+    font-size: 4em;
+    color: white;
+}
+
+#weatherIcon {
+    /*Box model stuff*/
+    width: 15%;
+    margin-left: 2%;
+    margin-top: 1%;
+    /*Manipulations stuff*/
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+#temperature {
+    /*Box model stuff*/
+    margin-left: 2%;
+    margin-top: 1%;
+    /*Typography stuff*/
+    font-size: 8em;
+    color: white;
+}
+
+#country {
+    /*Positioning stuff*/
+    position: absolute;
+    /*Box model stuff*/
+    margin-top: -1%;
+    /*Typography stuff*/
+    text-shadow: none;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+#feelsAndDescription {
+    /*Box model stuff*/
+    margin-left: 3%;
+    margin-top: 1.5%;
+    /*Typography stuff*/
+    font-size: 1.5em;
+    text-align: left;
+
+}
+
+#saveCityForm {
+    margin-top: -1%;
+    float: right;
+}
+
+#saveCity {
+    /*Positioning stuff*/
+    z-index: -2;
+    /*Box model stuff*/
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-width: 0;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.05);
+    /*Typography stuff*/
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.3);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#forecastCard {
+    /*Display stuff*/
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    /*Box model stuff*/
+    width: 70%;
+    margin: auto;
+    padding: 1%;
+    /*Miscellaneous*/
+    gap: 1%;
+}
+
+#dayCard {
+    /*Box model stuff*/
+    width: 15%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /*Typography stuff*/
+    font-size: 1em;
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#forecastDate {
+    /*Typography stuff*/
+    text-shadow: none;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+#forecastDay {
+    /*Box model stuff*/
+    margin-top: -5%;
+    /*Typography stuff*/
+    font-size: 2em;
+}
+
+#forecastTemperature {
+    /*Box model stuff*/
+    margin-top: -10%;
+    /*Typography stuff*/
+    font-size: 3em;
+}
+
+#forecastIcon {
+    /*Box model stuff*/
+    width: 80%;
+    margin-top: -15%;
+    /*Manipulations stuff*/
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+#moreInfo {
+    /*Display stuff*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /*Box model stuff*/
+    width: 100%;
+    /*Typography stuff*/
+    text-shadow: none;
+    color: rgba(0, 0, 0, 0.3);
+    /*Miscellaneous*/
+    place-items: center;
+}
+
+/* --- Saved City Card --- */
+#savedCities {
+    /*Display stuff*/
+    display: flex;
+    /*Box model stuff*/
+    width: 750px;
+    margin-top: 5%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /*Typography stuff*/
+    font-size: 2em;
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#savedCity {
+    margin-left: 5%;
+    color: white;
+}
+
+#savedIcon {
+    /*Box model stuff*/
+    width: 15%;
+    margin-left: 2%;
+    /*Manipulations stuff*/
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+#savedTemperature {
+    margin-left: 2%;
+    color: white;
+}
+
+#savedCountry {
+    /*Positioning stuff*/
+    position: absolute;
+    /*Box model stuff*/
+    margin-left: 2%;
+    /*Typography stuff*/
+    font-size: 0.5em;
+    text-shadow: none;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+#formRemove {
+    /*Box model stuff*/
+    margin-left: 6%;
+    margin-top: 3.5%;
+}
+
+#removeButton {
+    /*Box model stuff*/
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-width: 0;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.05);
+    /*Typography stuff*/
+    font-size: 0.5em;
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 0.3);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#formDetails {
+    /*Box model stuff*/
+    margin-left: 3%;
+    margin-top: 3.5%;
+}
+
+#moreDetails {
+    /*Box model stuff*/
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-width: 0;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.05);
+    /*Typography stuff*/
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 0.3);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Notification */
+.notificationError {
+    /*Box model stuff*/
+    width: 20%;
+    margin: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.05);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.notificationSuccess {
+    /*Box model stuff*/
+    width: 20%;
+    margin: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(0, 255, 81, 0.05);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.notificationSave {
+    /*Box model stuff*/
+    width: 20%;
+    margin: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(0, 255, 81, 0.05);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.notificationUnsave {
+    /*Box model stuff*/
+    width: 20%;
+    margin: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(0, 123, 255, 0.05);
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* --- Saved City List Navigation Screen --- */
+#wrapper {
+    /*Display stuff*/
+    display: flex;
+    justify-content: center;
+    /*Positioning stuff*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    /*Box model stuff*/
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    /*Manipulations stuff*/
+    transition: all 0.3s ease-in-out;
+    /*Miscellaneous*/
+    backdrop-filter: blur(10px);
+    clip-path: circle(0%);
+    backdrop-filter: blur(10px);
+}
+
+#listButton:checked~#wrapper {
+    clip-path: circle(100%);
+}
+
+#menuButton {
+    /*Positioning stuff*/
+    z-index: 4;
+    /*Box model stuff*/
+    width: 50px;
+    height: 50px;
+    margin-left: 1%;
+    margin-top: 2%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    /*Typography stuff*/
+    font-size: 2em;
+    text-align: center;
+    color: #fff;
+    /*Manipulations stuff*/
+    transition: all 0.3s ease-in-out;
+    /*Miscellaneous*/
+    cursor: pointer;
+    float: left;
+}
+
+#listButton {
+    display: none;
+}
+
+#listButton:checked~.menuButton {
+    /*Box model stuff*/
+    background: rgba(0, 0, 0, 0);
+    /*Typography stuff*/
+    color: white;
+}
+
+#content {
+    /*Positioning stuff*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /*Box model stuff*/
+    width: 100%;
+    /*Typography stuff*/
+    text-align: center;
+    color: #202020;
+    /*Manipulations stuff*/
+    transform: translate(-50%, -50%);
+}
+
+/* --- Adjusting for Screen Resolution --- */
+@media (min-width: 144px) {
+    #container {
+        zoom: 7.50%;
+    }
+}
+
+@media (min-width: 240px) {
+    #container {
+        zoom: 12.50%;
+    }
+}
+
+@media (min-width: 480px) {
+    #container {
+        zoom: 16.67%;
+    }
+}
+
+@media (min-width: 640px) {
+    #container {
+        zoom: 33.33%;
+    }
+}
+
+@media (min-width: 1280px) {
+    #container {
+        zoom: 66.67%;
+    }
+}
+
+@media (min-width: 1366px) {
+    #container {
+        zoom: 71.15%;
+    }
+}
+
+@media (min-width: 1600px) {
+    #container {
+        zoom: 83.33%;
+    }
+}
+
+@media (min-width: 1920px) {
+    #container {
+        zoom: 100%;
+    }
+}
+
+@media (min-width: 2560px) {
+    #container {
+        zoom: 133.33%;
+    }
+}
+
+@media (min-width: 3840px) {
+    #container {
+        zoom: 200%;
+    }
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles.css') }}">
+    <title>Weather Forecast</title>
+</head>
+
+<body>
+    <div id="container">
+
+        <!-- Display for Saved Cities -->
+        <div id="all">
+
+            <!-- Button to bring up Saved Cities -->
+            <input type="checkbox" id="listButton">
+            <label for="listButton" id="menuButton">&#8801;</label>
+            <div id="wrapper">
+                <div id="containSaved">
+
+                    {% for weather in weatherList %}
+                    <div id="savedCities">
+
+                        <!-- Displaying Saved Cities -->
+                        <h3 id="savedCountry">{{ weather.country }}</h3>
+                        <h3 id="savedCity">{{ weather.city }}</h3>
+                        <h3 id="savedTemperature">{{ weather.temperature }}° C</h3>
+                        <img id="savedIcon" src="http://openweathermap.org/img/wn/{{ weather.icon }}@4x.png">
+
+                        <!-- Button to search for Saved City -->
+                        <form id="formDetails" method="POST">
+                            <input type="hidden" name="citySelect" value="{{ weather.city }}">
+                            <button id="moreDetails" type="submit">→</button>
+                        </form>
+
+                        <!-- Button to remove Saved City -->
+                        <form id="formRemove" method="POST">
+                            {% for w in weatherInfo %}
+                            <input type="hidden" name="keepCity" value="{{ w.city }}">
+                            {% endfor %}
+                            <input type="hidden" name="cityDel" value="{{ weather.city }}">
+                            <button id="removeButton" type="submit">&#10005;</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <!-- Title -->
+            <p id="title">Weather Forecast</p>
+
+            <!-- Search Bar and Button -->
+            <form id="searchBar" method="POST">
+                <input id="inputCity" name="city" type="text" placeholder="Enter a City Name" autocomplete="off">
+                <button id="search" type="submit">
+                    <img id="searchIcon" src="{{ url_for('static', filename = 'search.png') }}"></img>
+                </button>
+            </form>
+
+            <!-- Notification -->
+            {% if not errorMessage == "" %}
+            <div class="{{ notification }}">{{ errorMessage }}</div>
+            {% endif %}
+        </div>
+
+        <br><br>
+
+        <!-- When a search is made, the div containing the weather is shown -->
+        {% if unhide == True %}
+        <div id="bottom">
+
+            <!-- Weather Card -->
+            {% for weather in weatherInfo %}
+            <div id="mainCard">
+                <div id="weatherCard">
+
+                    <!-- Main Card -->
+                    <div id="mainInfo">
+                        <h3 id="country">{{ weather.country }}</h3>
+                        <h3 class="weatherLine" id="city">{{ weather.city }}</h3>
+
+                        <img class="weatherLine" id="weatherIcon"
+                            src="http://openweathermap.org/img/wn/{{ weather.icon }}@4x.png">
+
+                        <h3 class="weatherLine" id="temperature">{{ weather.temperature }}° C</h3>
+
+                        <div class="weatherLine" id="feelsAndDescription">
+                            <h3>Feels like {{ weather.feelsLike }}° C</h3>
+                            <h3>{{ weather.description }}</h3>
+                        </div>
+
+                        <form id="saveCityForm" class="weatherLine" method="POST">
+                            <input type="hidden" name="cityAdd" value="{{ weather.city }}">
+                            <button id="saveCity" type="submit">+</button>
+                        </form>
+                    </div>
+
+                    <!-- More Info Card -->
+                    <div id="moreInfo">
+                        <div>
+                            <h3>Min. Temperature:<br>{{ weather.tempMin }}° C</h3>
+                            <h3>Max. Temperature:<br>{{ weather.tempMax }}° C</h3>
+                        </div>
+                        <div>
+                            <h3>Sunrise:<br>{{ weather.sunrise }}</h3>
+                            <h3>Sunset:<br>{{ weather.sunset }}</h3>
+                        </div>
+                        <div>
+                            <h3>Humidity:<br>{{ weather.humidity }}%</h3>
+                            <h3>Wind:<br>{{ weather.wind }} m/s</h3>
+                        </div>
+                        <div>
+                            <h3>Rain:<br>{{ weather.rain }} mm</h3>
+                            <h3>Snow:<br>{{ weather.snow }} mm</h3>
+                        </div>
+                    </div>
+                </div>
+
+                {{ weatherBackground|safe }}
+            </div>
+            {% endfor %}
+
+            <div id="forecastCard">
+                {% for day in forecastInfo %}
+                <div id="dayCard">
+                    <h3 id="forecastDate">{{ day.monthDay }}</h3>
+                    <h3 id="forecastDay">{{ day.dayOfWeek }}</h3>
+                    <img id="forecastIcon" src="http://openweathermap.org/img/wn/{{ day.icon }}@4x.png" alt="Image">
+                    <h3 id="forecastTemperature">{{ day.temperature }}° C</h3>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
