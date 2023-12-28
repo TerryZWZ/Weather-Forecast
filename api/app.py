@@ -1,15 +1,20 @@
+import os # For abstraction
 import time # Date formatting
 import datetime # Date formatting
 import requests # To get information from API
 from flask import Flask, render_template, request, redirect, url_for, flash # To create webpage
 from flask_sqlalchemy import SQLAlchemy # To create a database
 
-# Setup for Flask and SQLAlchemy
+# For environmental variables
+from dotenv import load_dotenv
+load_dotenv()
+
+# Setup for Flask and SQLAlchemypip ins
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///weather.db"
-app.config["SECRET_KEY"] = "secret"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('SQLALCHEMY_DATABASE_URI', "sqlite:///weather.db")
+app.config["SECRET_KEY"] = os.getenv('SECRET_KEY', "default_secret")
 db = SQLAlchemy(app)
 
 # Creating City class
@@ -24,7 +29,7 @@ unit = "metric" # Can set unit to be Celsius or Fahrenheit
 
 # Function to request information of a city from API
 def weatherData(city, choice):
-    key = "96ab064c60365e0728a3b1a0084dc65c"
+    key = os.getenv('OPENWEATHER_API_KEY', 'default_api_key')
 
     if choice == "forecast":
         url = f"http://api.openweathermap.org/data/2.5/forecast?q={ city }&units={ unit }&appid={ key }"
