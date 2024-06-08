@@ -11,7 +11,7 @@ load_dotenv()
 
 # Setup for Flask and SQLAlchemypip ins
 app = Flask(__name__)
-app.config["DEBUG"] = True
+app.config["DEBUG"] = False
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('SQLALCHEMY_DATABASE_URI', "sqlite:///weather.db")
 app.config["SECRET_KEY"] = os.getenv('SECRET_KEY', "default_secret")
@@ -259,7 +259,3 @@ def indexSearch():
         unhide = unhide,
         errorMessage = errorMessage,
         notification = notification)
-
-# Sets up link to see page
-if __name__ == "__main__":
-    app.run(host = "0.0.0.0", debug = True, port = 5000)
